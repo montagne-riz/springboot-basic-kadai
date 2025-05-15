@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.themeleaf.org">
+
+
+<head>
+     <meta charset="UTF-8">
+      <meta name = "viewport" content="width=device-width, initial-scale=1">
+       <title>お問合わせフォームを作ろう</title>
+</head>
+
+<body>
+
+<h2>お問い合わせフォーム</h2>
+<form th:action="@{/}" method="post">
+	<label for="name">お名前:</label>
+<input type="text" id="name" name="name" required>
+	
+	<label for="email">メールアドレス:</label>
+<input type="text" id="email" name="email" required>
+	
+	<label for="massage">お問い合わせ内容:</label>
+<textarea id="message" name="message"  cols="30" rows="10" required>
+	
+<button type="submit">送信</button>	
+		
+</form>
+
+
+<!-- メッセージがあれば表示 -->
+<p th:if="${failureMessage}" th:text="${failureMessage}" style="color: red;"></p>
+
+
+
+
+</body>
+</html>
