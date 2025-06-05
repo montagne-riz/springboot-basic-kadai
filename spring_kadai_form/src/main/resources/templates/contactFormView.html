@@ -1,36 +1,53 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.themeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 
 <head>
-     <meta charset="UTF-8">
-      <meta name = "viewport" content="width=device-width, initial-scale=1">
-       <title>お問合わせフォームを作ろう</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>お問合わせフォームを作ろう</title>
 </head>
 
 <body>
 
-<h2>お問い合わせフォーム</h2>
-<form th:action="@{/}" method="post">
-	<label for="name">お名前:</label>
-<input type="text" id="name" name="name" required>
-	
-	<label for="email">メールアドレス:</label>
-<input type="text" id="email" name="email" required>
-	
-	<label for="massage">お問い合わせ内容:</label>
-<textarea id="message" name="message"  cols="30" rows="10" required>
-	
-<button type="submit">送信</button>	
-		
-</form>
+	<h2>お問い合わせフォーム</h2>
 
 
-<!-- メッセージがあれば表示 -->
-<p th:if="${failureMessage}" th:text="${failureMessage}" style="color: red;"></p>
+	<form th:action="@{/form}" th:object="${contactForm}" method="post" novalidate>
+		<table>
+
+			<tr>
+				<td><label for="name">お名前:</label></td>
+				<td><input type="text" id="name" name="name" th:field="*{name}" required>
+				<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></p></td>
+			</tr>
+
+			<tr>
+				<td><label for="email">メールアドレス:</label></td>
+				<td><input type="text" id="email" name="email" th:field="*{email}" required>
+				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red;"></p></td>
+			</tr>
+
+			<tr>
+
+				<td> <label for="message">お問い合わせ内容:</label></td>
+				<td> <textarea id="message" name="message" th:field="*{message}" cols="30" rows="10"  required></textarea>
+				<p th:if="${#fields.hasErrors('message')}" th:errors="*{message}" style="color: red;"></p></td>
+
+			</tr>
+
+		</table>
+
+		<input type="submit" value="送信">
+
+
+	</form>
+
+
 
 
 
 
 </body>
+
 </html>

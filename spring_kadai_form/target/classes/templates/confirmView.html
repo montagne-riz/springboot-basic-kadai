@@ -23,15 +23,15 @@
 	
 	<tr>
     <td>お名前</td>
-    <td th:text="${name}"></td>
+    <td th:text="${contactForm.getName()}"></td>
 </tr>
 <tr>
     <td>メールアドレス</td>
-    <td th:text="${email}"></td>
+    <td th:text="${contactForm.getEmail()}"></td>
 </tr>
 <tr>
     <td>お問い合わせ内容</td>
-    <td th:text="${message}"></td>
+    <td th:text="${contactForm.getMessage()}"></td>
 </tr>
 	
 	
